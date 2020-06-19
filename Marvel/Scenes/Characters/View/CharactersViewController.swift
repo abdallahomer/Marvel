@@ -8,13 +8,30 @@
 
 import UIKit
 
-protocol CharactersViewLogic: class {
+protocol CharactersViewLogic: IndicatorProtocol {
     
 }
 
 class CharactersViewController: UIViewController {
+    private let charactersCellIdentifier = "charactersCellIdentifier"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
+}
+
+extension CharactersViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: charactersCellIdentifier, for: indexPath)
+        return cell
+    }
+}
+
+extension CharactersViewController: UITableViewDelegate {
+    
 }

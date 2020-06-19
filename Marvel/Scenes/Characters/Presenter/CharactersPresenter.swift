@@ -9,9 +9,21 @@
 import Foundation
 
 protocol CharactersPresenterLogic {
-    
+    func viewDidLoad()
 }
 
-class CharactersPresenter: CharactersPresenterLogic {
+class CharactersPresenter {
+    private weak var view: CharactersViewLogic?
+    private let model: CharactersModelLogic!
     
+    init(view: CharactersViewLogic, model: CharactersModelLogic) {
+        self.view = view
+        self.model = model
+    }
+}
+
+extension CharactersPresenter: CharactersPresenterLogic {
+    func viewDidLoad() {
+        
+    }
 }

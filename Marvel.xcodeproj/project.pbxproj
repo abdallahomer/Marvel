@@ -23,6 +23,10 @@
 		FA1D3E7B249CA84A0033B525 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E7A249CA84A0033B525 /* UIViewController.swift */; };
 		FA1D3E7E249CA8C10033B525 /* IndicatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E7D249CA8C10033B525 /* IndicatorProtocol.swift */; };
 		FA1D3E80249CAB7D0033B525 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E7F249CAB7D0033B525 /* Indicator.swift */; };
+		FA1D3E82249CAD1B0033B525 /* CharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E81249CAD1B0033B525 /* CharactersModel.swift */; };
+		FA1D3E85249CB3510033B525 /* ParallelogramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E84249CB3510033B525 /* ParallelogramView.swift */; };
+		FA1D3E87249CB8000033B525 /* CharactersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E86249CB8000033B525 /* CharactersTableViewCell.swift */; };
+		FA1D3E89249CB96A0033B525 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E88249CB96A0033B525 /* UIImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,10 @@
 		FA1D3E7A249CA84A0033B525 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		FA1D3E7D249CA8C10033B525 /* IndicatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorProtocol.swift; sourceTree = "<group>"; };
 		FA1D3E7F249CAB7D0033B525 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
+		FA1D3E81249CAD1B0033B525 /* CharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersModel.swift; sourceTree = "<group>"; };
+		FA1D3E84249CB3510033B525 /* ParallelogramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelogramView.swift; sourceTree = "<group>"; };
+		FA1D3E86249CB8000033B525 /* CharactersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTableViewCell.swift; sourceTree = "<group>"; };
+		FA1D3E88249CB96A0033B525 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				FA1D3E6C249CA34F0033B525 /* Scenes */,
+				FA1D3E83249CB2E80033B525 /* Custom Views */,
 				FA1D3E77249CA61E0033B525 /* Helpers */,
 				FA1D3E66249CA1C30033B525 /* Common */,
 				FA1D3E63249C9E4C0033B525 /* Extensions */,
@@ -201,6 +210,7 @@
 			children = (
 				FA1D3E64249C9E5C0033B525 /* String.swift */,
 				FA1D3E7A249CA84A0033B525 /* UIViewController.swift */,
+				FA1D3E88249CB96A0033B525 /* UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -244,6 +254,7 @@
 		FA1D3E6E249CA3880033B525 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FA1D3E81249CAD1B0033B525 /* CharactersModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -260,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				FA1D3E73249CA4170033B525 /* CharactersViewController.swift */,
+				FA1D3E86249CB8000033B525 /* CharactersTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -278,6 +290,14 @@
 				FA1D3E7D249CA8C10033B525 /* IndicatorProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FA1D3E83249CB2E80033B525 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA1D3E84249CB3510033B525 /* ParallelogramView.swift */,
+			);
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,7 +468,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA1D3E87249CB8000033B525 /* CharactersTableViewCell.swift in Sources */,
 				FA1D3E5F249C9A5F0033B525 /* API.swift in Sources */,
+				FA1D3E89249CB96A0033B525 /* UIImageView.swift in Sources */,
 				FA1D3E65249C9E5C0033B525 /* String.swift in Sources */,
 				FA1D3E7B249CA84A0033B525 /* UIViewController.swift in Sources */,
 				FA1D3E80249CAB7D0033B525 /* Indicator.swift in Sources */,
@@ -456,7 +478,9 @@
 				FA1D3E76249CA5230033B525 /* CharactersPresenter.swift in Sources */,
 				FA1D3E74249CA4170033B525 /* CharactersViewController.swift in Sources */,
 				FA177D0E249C78F1005BBF3B /* AppDelegate.swift in Sources */,
+				FA1D3E85249CB3510033B525 /* ParallelogramView.swift in Sources */,
 				FA1D3E62249C9AC90033B525 /* Constants.swift in Sources */,
+				FA1D3E82249CAD1B0033B525 /* CharactersModel.swift in Sources */,
 				FA1D3E69249CA1E60033B525 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
