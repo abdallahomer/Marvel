@@ -19,6 +19,10 @@
 		FA1D3E69249CA1E60033B525 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E68249CA1E60033B525 /* APIError.swift */; };
 		FA1D3E72249CA4010033B525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA1D3E71249CA4010033B525 /* Main.storyboard */; };
 		FA1D3E74249CA4170033B525 /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E73249CA4170033B525 /* CharactersViewController.swift */; };
+		FA1D3E76249CA5230033B525 /* CharactersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E75249CA5230033B525 /* CharactersPresenter.swift */; };
+		FA1D3E7B249CA84A0033B525 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E7A249CA84A0033B525 /* UIViewController.swift */; };
+		FA1D3E7E249CA8C10033B525 /* IndicatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E7D249CA8C10033B525 /* IndicatorProtocol.swift */; };
+		FA1D3E80249CAB7D0033B525 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E7F249CAB7D0033B525 /* Indicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,10 @@
 		FA1D3E68249CA1E60033B525 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		FA1D3E71249CA4010033B525 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FA1D3E73249CA4170033B525 /* CharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewController.swift; sourceTree = "<group>"; };
+		FA1D3E75249CA5230033B525 /* CharactersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersPresenter.swift; sourceTree = "<group>"; };
+		FA1D3E7A249CA84A0033B525 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		FA1D3E7D249CA8C10033B525 /* IndicatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorProtocol.swift; sourceTree = "<group>"; };
+		FA1D3E7F249CAB7D0033B525 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				FA1D3E6C249CA34F0033B525 /* Scenes */,
+				FA1D3E77249CA61E0033B525 /* Helpers */,
 				FA1D3E66249CA1C30033B525 /* Common */,
 				FA1D3E63249C9E4C0033B525 /* Extensions */,
 				FA1D3E60249C9AB10033B525 /* Constants */,
@@ -191,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				FA1D3E64249C9E5C0033B525 /* String.swift */,
+				FA1D3E7A249CA84A0033B525 /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -198,6 +208,7 @@
 		FA1D3E66249CA1C30033B525 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FA1D3E7C249CA8A60033B525 /* Protocols */,
 				FA1D3E67249CA1D50033B525 /* Structs */,
 			);
 			path = Common;
@@ -240,6 +251,7 @@
 		FA1D3E6F249CA38D0033B525 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				FA1D3E75249CA5230033B525 /* CharactersPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -250,6 +262,22 @@
 				FA1D3E73249CA4170033B525 /* CharactersViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		FA1D3E77249CA61E0033B525 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FA1D3E7F249CAB7D0033B525 /* Indicator.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FA1D3E7C249CA8A60033B525 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FA1D3E7D249CA8C10033B525 /* IndicatorProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,6 +450,10 @@
 			files = (
 				FA1D3E5F249C9A5F0033B525 /* API.swift in Sources */,
 				FA1D3E65249C9E5C0033B525 /* String.swift in Sources */,
+				FA1D3E7B249CA84A0033B525 /* UIViewController.swift in Sources */,
+				FA1D3E80249CAB7D0033B525 /* Indicator.swift in Sources */,
+				FA1D3E7E249CA8C10033B525 /* IndicatorProtocol.swift in Sources */,
+				FA1D3E76249CA5230033B525 /* CharactersPresenter.swift in Sources */,
 				FA1D3E74249CA4170033B525 /* CharactersViewController.swift in Sources */,
 				FA177D0E249C78F1005BBF3B /* AppDelegate.swift in Sources */,
 				FA1D3E62249C9AC90033B525 /* Constants.swift in Sources */,
@@ -581,6 +613,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8FB3BU56AV;
 				INFOPLIST_FILE = "Marvel/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -588,7 +621,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.abdallah.Marvel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -600,6 +633,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8FB3BU56AV;
 				INFOPLIST_FILE = "Marvel/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -607,7 +641,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.abdallah.Marvel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
