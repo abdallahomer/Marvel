@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 class API {
-    static func getDataWithPostMethodWith(url: URL, _ parameters: [String: Any] = [:], completionHandler: @escaping(String?, Bool, Data?) -> ()){
+    static func getDataWith(url: URL, _ parameters: [String: Any] = [:], completionHandler: @escaping(Bool, Data?) -> ()){
         var parameters = parameters
         let timestamp = String(Date().timeIntervalSince1970)
         
@@ -21,10 +21,10 @@ class API {
         AF.request(url, method: .get, parameters: parameters).responseJSON { (response) in
             switch response.result {
             case .success( let value):
-                completionHandler(nil, true, response.data!)
+                completionHandler(true, response.data!)
                 break
             case .failure (let error):
-                completionHandler(error.localizedDescription, false, nil)
+                completionHandler(false, nil)
                 break
             }
         }

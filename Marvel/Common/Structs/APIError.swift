@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct WebServiceError: Error, LocalizedError {
+struct APIError: Error {
     let message: String
     var errorDescription: String? {message}
 }

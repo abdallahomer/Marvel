@@ -27,6 +27,7 @@
 		FA1D3E85249CB3510033B525 /* ParallelogramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E84249CB3510033B525 /* ParallelogramView.swift */; };
 		FA1D3E87249CB8000033B525 /* CharactersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E86249CB8000033B525 /* CharactersTableViewCell.swift */; };
 		FA1D3E89249CB96A0033B525 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E88249CB96A0033B525 /* UIImageView.swift */; };
+		FA1D3E8B249CC6310033B525 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E8A249CC6310033B525 /* JSONDecoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		FA1D3E84249CB3510033B525 /* ParallelogramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelogramView.swift; sourceTree = "<group>"; };
 		FA1D3E86249CB8000033B525 /* CharactersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTableViewCell.swift; sourceTree = "<group>"; };
 		FA1D3E88249CB96A0033B525 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		FA1D3E8A249CC6310033B525 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 				FA1D3E64249C9E5C0033B525 /* String.swift */,
 				FA1D3E7A249CA84A0033B525 /* UIViewController.swift */,
 				FA1D3E88249CB96A0033B525 /* UIImageView.swift */,
+				FA1D3E8A249CC6310033B525 /* JSONDecoder.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				FA177D0E249C78F1005BBF3B /* AppDelegate.swift in Sources */,
 				FA1D3E85249CB3510033B525 /* ParallelogramView.swift in Sources */,
 				FA1D3E62249C9AC90033B525 /* Constants.swift in Sources */,
+				FA1D3E8B249CC6310033B525 /* JSONDecoder.swift in Sources */,
 				FA1D3E82249CAD1B0033B525 /* CharactersModel.swift in Sources */,
 				FA1D3E69249CA1E60033B525 /* APIError.swift in Sources */,
 			);
