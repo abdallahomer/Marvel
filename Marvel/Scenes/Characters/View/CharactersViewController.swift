@@ -9,6 +9,8 @@
 import UIKit
 
 protocol CharactersViewLogic: IndicatorProtocol {
+    func setupNaviationItems()
+    func pushSearchVC()
     func reloadData()
     func navigateTCharacterDetailsVCWith(characterData: CharacterResponse.Data.Results)
 }
@@ -47,6 +49,21 @@ extension CharactersViewController: UITableViewDelegate {
 }
 
 extension CharactersViewController: CharactersViewLogic {
+    func setupNaviationItems() {
+        let logoImageView = UIImageView(image: UIImage(named: "icn-nav-marvel"))
+        navigationItem.titleView = logoImageView
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icn-nav-search"), style: .plain, target: self, action: #selector(searchButtonTapped))
+    }
+    
+    @objc private func searchButtonTapped() {
+        presenter.searchButtonTapped()
+    }
+    
+    func pushSearchVC() {
+        pushViewControllerWith("searchVC", in: "Main")
+    }
+    
     func reloadData() {
         tableView.reloadData()
     }

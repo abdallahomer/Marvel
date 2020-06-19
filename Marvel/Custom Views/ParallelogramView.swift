@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class ParallelogramView: UILabel {
+class ParallelogramView: UIView {
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath()
         

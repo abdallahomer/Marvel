@@ -10,6 +10,7 @@ import Foundation
 
 protocol CharactersPresenterLogic {
     func viewDidLoad()
+    func searchButtonTapped()
     var charactersCount: Int {get}
     func configure(_ cell: CharactersTableViewCellLogic, at row: Int)
     func didSelectAt(row: Int)
@@ -29,6 +30,7 @@ class CharactersPresenter {
 
 extension CharactersPresenter: CharactersPresenterLogic {
     func viewDidLoad() {
+        view?.setupNaviationItems()
         getCharacters()
     }
     
@@ -43,12 +45,16 @@ extension CharactersPresenter: CharactersPresenterLogic {
         }
     }
     
+    func searchButtonTapped() {
+        view?.pushSearchVC()
+    }
+    
     var charactersCount: Int {
         return charctersArray.count
     }
     
     func configure(_ cell: CharactersTableViewCellLogic, at row: Int) {
-        cell.characterImageURL = charctersArray[row].thumbnail!.path + charctersArray[row].thumbnail!.extension
+        cell.characterImageURL = charctersArray[row].thumbnail!.path + "." +  charctersArray[row].thumbnail!.extension
         cell.characterTitle = charctersArray[row].name
     }
     

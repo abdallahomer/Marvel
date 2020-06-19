@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "icn-cell-disclosure.pdf",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icn-cell-disclosure.pdf",
       "idiom" : "universal",
       "scale" : "2x"
     },

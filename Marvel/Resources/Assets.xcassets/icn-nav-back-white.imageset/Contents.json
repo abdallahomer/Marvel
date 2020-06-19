@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "icn-nav-back-white.pdf",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icn-nav-back-white.pdf",
       "idiom" : "universal",
       "scale" : "2x"
     },
