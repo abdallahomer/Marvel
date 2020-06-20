@@ -6,22 +6,31 @@
 //  Copyright © 2020 abdallahomar. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol CharacterDetailsPresenterLogic {
     func viewDidLoad()
     
-    var cellCount: Int {get}
+    var TableViewCellCount: Int {get}
     
     func configure(_ cell: CharacterThumbnailCellProtocol, at row: Int)
     func configure(_ cell: CharacterDetailsCellProtocol, at row: Int)
     func configure(_ cell: CharacterActionsCell, at row: Int)
     func configure(_ cell: CharacterRelatedLinksCell, at row: Int)
+    
+    func tableViewWillDisplayAt(_ cell: CharacterActionsCell, at row: Int)
+    func tableViewDidEndDisplayingAt(_ cell: CharacterActionsCell, at row: Int)
+    
+    var actions: [[ActionsResponse.Data.Results]] {get}
+    func configure(_ cell: ActionCollectionViewCellProtocol, at parentRow: Int, childRow: Int)
 }
 
 class CharacterDetailsPresenter {
     private weak var view: CharacterDetailsViewLogic?
     private let model: CharacterDetailsModelLogic
+    private var actionsArray = [[ActionsResponse.Data.Results]]()
+    private let actionsTitlesArray = ["COMICS", "SERIES", "STORIES", "EVENTS"]
+    private var storedOffsets = [Int: CGFloat]()
     
     init(view: CharacterDetailsViewLogic, model: CharacterDetailsModelLogic) {
         self.view = view
@@ -33,10 +42,26 @@ extension CharacterDetailsPresenter: CharacterDetailsPresenterLogic {
     func viewDidLoad() {
         view?.setCharacterTitle()
         view?.setupNaviationItems()
+        getActionsfor(actionType: .comics)
+        getActionsfor(actionType: .series)
+        getActionsfor(actionType: .stories)
+        getActionsfor(actionType: .events)
     }
     
-    var cellCount: Int {
-        return 4
+    private func getActionsfor(actionType: ActionType) {
+        view?.showIndicator()
+        guard let characterId = view?.characterId else {return}
+        model.getActionsDataFor(characterId: characterId, actionType: actionType) { (success, response) in
+            self.view?.hideIndicator()
+            if success {
+                self.actionsArray.append(response?.results ?? [])
+                self.view?.reloadData()
+            }
+        }
+    }
+    
+    var TableViewCellCount: Int {
+        actionsTitlesArray.count
     }
     
     func configure(_ cell: CharacterThumbnailCellProtocol, at row: Int) {
@@ -54,7 +79,7 @@ extension CharacterDetailsPresenter: CharacterDetailsPresenterLogic {
     }
     
     func configure(_ cell: CharacterActionsCell, at row: Int) {
-        
+        cell.actionTitleLabel.text = actionsTitlesArray[row]
     }
     
     func configure(_ cell: CharacterRelatedLinksCell, at row: Int) {
@@ -63,5 +88,24 @@ extension CharacterDetailsPresenter: CharacterDetailsPresenterLogic {
             let stackView = view?.configureLinksStackViewsWith(title: link.type)
             cell.stackView = stackView
         }
+    }
+    
+    func tableViewWillDisplayAt(_ cell: CharacterActionsCell, at row: Int) {
+        cell.collectionViewOffset = storedOffsets[row] ?? 0
+    }
+    
+    func tableViewDidEndDisplayingAt(_ cell: CharacterActionsCell, at row: Int) {
+        storedOffsets[row] = cell.collectionViewOffset
+    }
+    
+    var actions: [[ActionsResponse.Data.Results]] {
+        actionsArray
+    }
+    
+    func configure(_ cell: ActionCollectionViewCellProtocol, at parentRow: Int, childRow: Int) {
+        let path = actionsArray[safe: parentRow]?[childRow].thumbnail?.path ?? ""
+        let `extension` = actionsArray[safe: parentRow]?[childRow].thumbnail?.extension ?? ""
+        cell.actionImageURL = path + "." + `extension`
+        cell.actionTitle = actionsArray[safe: parentRow]?[childRow].title ?? ""
     }
 }
