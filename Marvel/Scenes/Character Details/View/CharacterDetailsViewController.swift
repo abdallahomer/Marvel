@@ -11,6 +11,7 @@ import UIKit
 protocol CharacterDetailsViewLogic: IndicatorProtocol {
     func setupNaviationItems()
     func setCharacterTitle()
+    func setupPresentation()
     
     var characterId: Int? {get}
     var characterName: String? {get}
@@ -155,6 +156,10 @@ extension CharacterDetailsViewController: CharacterDetailsViewLogic {
     
     func setCharacterTitle() {
         title = characterData?.name
+    }
+    
+    func setupPresentation() {
+        definesPresentationContext = true
     }
     
     func configureLinksStackViewsWith(title: String) -> UIStackView {

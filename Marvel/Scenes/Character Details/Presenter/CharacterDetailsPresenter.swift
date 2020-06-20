@@ -42,6 +42,7 @@ class CharacterDetailsPresenter {
 extension CharacterDetailsPresenter: CharacterDetailsPresenterLogic {
     func viewDidLoad() {
         view?.setCharacterTitle()
+        view?.setupPresentation()
         view?.setupNaviationItems()
         self.actionsArray = [[], [], [], []]
         getActionsfor(actionType: .comics) { self.actionsArray[0] = $0 }

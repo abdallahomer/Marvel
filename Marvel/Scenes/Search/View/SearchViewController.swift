@@ -49,7 +49,7 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        presenter.searchTextDidChangedWith(text: searchText)
+        presenter.searchTextDidChangedWith(text: searchText, newWord: true)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

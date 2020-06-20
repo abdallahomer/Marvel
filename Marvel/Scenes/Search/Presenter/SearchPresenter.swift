@@ -10,7 +10,7 @@ protocol SearchPresenterLogic {
     func viewDidLoad()
     func viewDidAppear()
     func searchBarCancelButtonDidClicked()
-    func searchTextDidChangedWith(text: String)
+    func searchTextDidChangedWith(text: String, newWord: Bool)
     func didPresentSearchController()
     
     var characterCount: Int {get}
@@ -52,7 +52,12 @@ extension SearchPresenter: SearchPresenterLogic {
         view?.setSearchBarFirstResponder()
     }
     
-    func searchTextDidChangedWith(text: String) {
+    func searchTextDidChangedWith(text: String, newWord: Bool = false) {
+        if newWord {
+            isRequesting = false
+            offset = 0
+            charactersArray.removeAll()
+        }
         guard !isRequesting else { return }
         isRequesting = true
         
@@ -77,6 +82,8 @@ extension SearchPresenter: SearchPresenterLogic {
     
     private func checkIfTextNotEmpty(text: String) -> Bool {
         guard !text.isEmpty else {
+            self.isRequesting = false
+            offset = 0
             charactersArray.removeAll()
             view?.reloadData()
             return false
