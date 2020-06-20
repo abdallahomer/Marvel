@@ -24,10 +24,16 @@ struct CharacterResponse: Decodable {
             let name: String
             let description: String
             let thumbnail: Thumbnail?
+            let urls: [URLs]
             
             struct Thumbnail: Decodable {
                 let path: String
                 let `extension`: String
+            }
+            
+            struct URLs: Decodable {
+                let url: String
+                let type: String
             }
         }
     }

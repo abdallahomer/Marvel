@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+protocol CharacterDetailsModelLogic {
+    
+}
+
+class CharacterDetailsModel: CharacterDetailsModelLogic {
+    
+}

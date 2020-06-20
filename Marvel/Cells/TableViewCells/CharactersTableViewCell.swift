@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol CharactersTableViewCellLogic: AnyObject {
+protocol CharactersTableViewCellProtocol: AnyObject {
     var characterImageURL: String? {set get}
     var characterTitle: String? {set get}
 }
 
-class CharactersTableViewCell: UITableViewCell, CharactersTableViewCellLogic {
+class CharactersTableViewCell: UITableViewCell, CharactersTableViewCellProtocol {
     @IBOutlet weak var characterImageView: UIImageView!
     @IBOutlet weak var characterTitleLabel: UILabel!
     
