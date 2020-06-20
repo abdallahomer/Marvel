@@ -14,7 +14,7 @@ protocol CharactersPresenterLogic {
     
     var charactersCount: Int {get}
     
-    func configure(_ cell: CharactersTableViewCellLogic, at row: Int)
+    func configure(_ cell: CharactersTableViewCellProtocol, at row: Int)
     func didSelectAt(row: Int)
 }
 
@@ -55,7 +55,7 @@ extension CharactersPresenter: CharactersPresenterLogic {
         return charactersArray.count
     }
     
-    func configure(_ cell: CharactersTableViewCellLogic, at row: Int) {
+    func configure(_ cell: CharactersTableViewCellProtocol, at row: Int) {
         cell.characterImageURL = charactersArray[row].thumbnail!.path + "." +  charactersArray[row].thumbnail!.extension
         cell.characterTitle = charactersArray[row].name
     }
