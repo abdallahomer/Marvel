@@ -88,7 +88,7 @@ extension SearchViewController: SearchViewLogic {
     }
     
     func navigateTCharacterDetailsVCWith(characterData: CharacterResponse.Data.Results) {
-        let characterDetailsVC = returnViewControllerWith("characterDetailsVC", in: "Main", type: CharacterDetailsViewController.self)
+        let characterDetailsVC = returnViewControllerWith("characterDetailsVC", in: MAIN_STORYBOARD, type: CharacterDetailsViewController.self)
         characterDetailsVC.characterData = characterData
         navigationController?.pushViewController(characterDetailsVC, animated: true)
     }

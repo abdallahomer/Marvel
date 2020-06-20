@@ -15,12 +15,6 @@ extension UIViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func presentViewControllerWith<T: UIViewController>(_ identifier: String, in storyboard: String, type: T.Type? = nil) {
-        let viewController = setupViewControllerWith(identifier, in: storyboard)
-        viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: false, completion: nil)
-    }
-    
     func returnViewControllerWith<T: UIViewController>(_ identifier: String, in storyboard: String, type: T.Type? = nil) -> T {
         let viewController = setupViewControllerWith(identifier, in: storyboard, type: type)
         return viewController

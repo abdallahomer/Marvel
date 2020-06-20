@@ -73,7 +73,7 @@ extension CharacterDetailsPresenter: CharacterDetailsPresenterLogic {
     
     func configure(_ cell: CharacterDetailsCellProtocol, at row: Int) {
         if let characterName = view?.characterName { cell.nameTitle = characterName }
-        if let description = view?.characterDescription {
+        if let description = view?.characterDescription, !description.isEmpty {
             cell.characterDescription = description
         } else {
             cell.characterDescription = "Not available"

@@ -18,7 +18,6 @@ protocol CharactersViewLogic: IndicatorProtocol {
 class CharactersViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    private let charactersCellIdentifier = "charactersCell"
     private lazy var presenter: CharactersPresenterLogic = {
        return CharactersPresenter(view: self, model: CharactersModel())
     }()
@@ -35,7 +34,7 @@ extension CharactersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: charactersCellIdentifier, for: indexPath) as! CharactersTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "charactersCell", for: indexPath) as! CharactersTableViewCell
         presenter.configure(cell, at: indexPath.row)
         
         return cell
@@ -61,7 +60,7 @@ extension CharactersViewController: CharactersViewLogic {
     }
     
     func pushSearchVC() {
-        pushViewControllerWith("searchVC", in: "Main")
+        pushViewControllerWith("searchVC", in: MAIN_STORYBOARD)
     }
     
     func reloadData() {
@@ -69,7 +68,7 @@ extension CharactersViewController: CharactersViewLogic {
     }
     
     func navigateTCharacterDetailsVCWith(characterData: CharacterResponse.Data.Results) {
-        let characterDetailsVC = returnViewControllerWith("characterDetailsVC", in: "Main", type: CharacterDetailsViewController.self)
+        let characterDetailsVC = returnViewControllerWith("characterDetailsVC", in: MAIN_STORYBOARD, type: CharacterDetailsViewController.self)
         characterDetailsVC.characterData = characterData
         navigationController?.pushViewController(characterDetailsVC, animated: true)
     }

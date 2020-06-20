@@ -29,6 +29,13 @@ class CharacterDetailsViewController: UIViewController {
     
     var characterData: CharacterResponse.Data.Results?
     
+    private let sectionsNumber = 4
+    private enum SectionNumbers: Int {
+        case thumbnail = 0
+        case details = 1
+        case actions = 2
+        case links = 3
+    }
     private enum CellIdentifier: String {
         case thumbnailCell
         case actionsCell
@@ -48,16 +55,16 @@ class CharacterDetailsViewController: UIViewController {
 
 extension CharacterDetailsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return sectionsNumber
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
+        switch SectionNumbers(rawValue: section) {
+        case .thumbnail:
             return 1
-        case 1:
+        case .details:
             return 1
-        case 3:
+        case .links:
             return 1
         default:
             return presenter.TableViewCellCount
@@ -65,18 +72,18 @@ extension CharacterDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
+        switch SectionNumbers(rawValue: indexPath.section) {
+        case .thumbnail:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.thumbnailCell.rawValue, for: indexPath) as! CharacterThumbnailCell
             presenter.configure(cell, at: indexPath.row)
             
             return cell
-        case 1:
+        case .details:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.detailsCell.rawValue, for: indexPath) as! CharacterDetailsCell
             presenter.configure(cell, at: indexPath.row)
             
             return cell
-        case 3:
+        case .links:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.relatedLinksCell.rawValue, for: indexPath) as! CharacterRelatedLinksCell
             presenter.configure(cell, at: indexPath.row)
             
@@ -92,7 +99,7 @@ extension CharacterDetailsViewController: UITableViewDataSource {
 
 extension CharacterDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.section == 2 {
+        if SectionNumbers(rawValue: indexPath.section) == .actions {
             guard let cell = cell as? CharacterActionsCell else { return }
             cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
             presenter.tableViewWillDisplayAt(cell, at: indexPath.row)
@@ -100,7 +107,7 @@ extension CharacterDetailsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.section == 2 {
+        if SectionNumbers(rawValue: indexPath.section) == .actions {
             guard let cell = cell as? CharacterActionsCell else { return }
             presenter.tableViewDidEndDisplayingAt(cell, at: indexPath.row)
         }
@@ -169,7 +176,7 @@ extension CharacterDetailsViewController: CharacterDetailsViewLogic {
     }
     
     func presentMediaDataWith(data: ActionsResponse.Data.Results) {
-        let imageViewerVC = returnViewControllerWith("imageViewerVC", in: "Main", type: ImageViewerViewController.self)
+        let imageViewerVC = returnViewControllerWith("imageViewerVC", in: MAIN_STORYBOARD, type: ImageViewerViewController.self)
         imageViewerVC.mediaData = data
         imageViewerVC.modalPresentationStyle = .overCurrentContext
         present(imageViewerVC, animated: false, completion: nil)
