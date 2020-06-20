@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 class API {
-    static func getDataWith(url: URL, _ parameters: [String: Any] = [:], completionHandler: @escaping(Bool, Data?) -> ()){
+    static func getDataWith(url: URL, _ parameters: [String: Any], completionHandler: @escaping(Bool, Data?) -> ()){
         var parameters = parameters
         let timestamp = String(Date().timeIntervalSince1970)
         

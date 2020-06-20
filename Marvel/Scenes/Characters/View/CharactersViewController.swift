@@ -18,7 +18,7 @@ protocol CharactersViewLogic: IndicatorProtocol {
 class CharactersViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    private let charactersCellIdentifier = "charactersCellIdentifier"
+    private let charactersCellIdentifier = "charactersCell"
     private lazy var presenter: CharactersPresenterLogic = {
        return CharactersPresenter(view: self, model: CharactersModel())
     }()

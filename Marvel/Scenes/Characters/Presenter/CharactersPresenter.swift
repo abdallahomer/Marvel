@@ -11,20 +11,22 @@ import Foundation
 protocol CharactersPresenterLogic {
     func viewDidLoad()
     func searchButtonTapped()
+    
     var charactersCount: Int {get}
+    
     func configure(_ cell: CharactersTableViewCellLogic, at row: Int)
     func didSelectAt(row: Int)
 }
 
 class CharactersPresenter {
     private weak var view: CharactersViewLogic?
-    private let model: CharactersModelLogic!
-    private var charctersArray: [CharacterResponse.Data.Results]
+    private let model: CharactersModelLogic
+    private var charactersArray: [CharacterResponse.Data.Results]
     
-    init(view: CharactersViewLogic, model: CharactersModelLogic, charctersArray: [CharacterResponse.Data.Results] = []) {
+    init(view: CharactersViewLogic, model: CharactersModelLogic, charactersArray: [CharacterResponse.Data.Results] = []) {
         self.view = view
         self.model = model
-        self.charctersArray = charctersArray
+        self.charactersArray = charactersArray
     }
 }
 
@@ -36,10 +38,10 @@ extension CharactersPresenter: CharactersPresenterLogic {
     
     private func getCharacters() {
         view?.showIndicator()
-        model.getCharacters { (success, response)  in
+        model.getCharactersData(parameters: [:]) { (success, response)  in
             self.view?.hideIndicator()
             if success {
-                self.charctersArray = response?.results ?? []
+                self.charactersArray = response?.results ?? []
                 self.view?.reloadData()
             }
         }
@@ -50,12 +52,12 @@ extension CharactersPresenter: CharactersPresenterLogic {
     }
     
     var charactersCount: Int {
-        return charctersArray.count
+        return charactersArray.count
     }
     
     func configure(_ cell: CharactersTableViewCellLogic, at row: Int) {
-        cell.characterImageURL = charctersArray[row].thumbnail!.path + "." +  charctersArray[row].thumbnail!.extension
-        cell.characterTitle = charctersArray[row].name
+        cell.characterImageURL = charactersArray[row].thumbnail!.path + "." +  charactersArray[row].thumbnail!.extension
+        cell.characterTitle = charactersArray[row].name
     }
     
     func didSelectAt(row: Int) {

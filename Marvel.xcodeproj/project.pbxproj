@@ -30,7 +30,7 @@
 		FA1D3E8B249CC6310033B525 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E8A249CC6310033B525 /* JSONDecoder.swift */; };
 		FA1D3E91249CF6BC0033B525 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E90249CF6BC0033B525 /* SearchViewController.swift */; };
 		FA1D3E93249CF6D70033B525 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E92249CF6D70033B525 /* SearchPresenter.swift */; };
-		FA1D3E95249CF6E30033B525 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D3E94249CF6E30033B525 /* SearchModel.swift */; };
+		FA5ED0B3249D9A5400C3AC89 /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5ED0B2249D9A5400C3AC89 /* Characters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +75,7 @@
 		FA1D3E8A249CC6310033B525 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
 		FA1D3E90249CF6BC0033B525 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		FA1D3E92249CF6D70033B525 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
-		FA1D3E94249CF6E30033B525 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		FA5ED0B2249D9A5400C3AC89 /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +141,8 @@
 		FA177D0C249C78F1005BBF3B /* Marvel */ = {
 			isa = PBXGroup;
 			children = (
+				FA5ED0B1249D9A3200C3AC89 /* Shared Models */,
+				FA1D3E98249D961F0033B525 /* Cells */,
 				FA1D3E6C249CA34F0033B525 /* Scenes */,
 				FA1D3E83249CB2E80033B525 /* Custom Views */,
 				FA1D3E77249CA61E0033B525 /* Helpers */,
@@ -237,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				FA1D3E68249CA1E60033B525 /* APIError.swift */,
+				FA5ED0B2249D9A5400C3AC89 /* Characters.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -256,17 +259,8 @@
 			children = (
 				FA1D3E70249CA3940033B525 /* View */,
 				FA1D3E6F249CA38D0033B525 /* Presenter */,
-				FA1D3E6E249CA3880033B525 /* Model */,
 			);
 			path = Characters;
-			sourceTree = "<group>";
-		};
-		FA1D3E6E249CA3880033B525 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				FA1D3E81249CAD1B0033B525 /* CharactersModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		FA1D3E6F249CA38D0033B525 /* Presenter */ = {
@@ -281,7 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				FA1D3E73249CA4170033B525 /* CharactersViewController.swift */,
-				FA1D3E86249CB8000033B525 /* CharactersTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -315,17 +308,8 @@
 			children = (
 				FA1D3E8F249CF69A0033B525 /* View */,
 				FA1D3E8E249CF6930033B525 /* Presenter */,
-				FA1D3E8D249CF68E0033B525 /* Model */,
 			);
 			path = Search;
-			sourceTree = "<group>";
-		};
-		FA1D3E8D249CF68E0033B525 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				FA1D3E94249CF6E30033B525 /* SearchModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		FA1D3E8E249CF6930033B525 /* Presenter */ = {
@@ -342,6 +326,30 @@
 				FA1D3E90249CF6BC0033B525 /* SearchViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		FA1D3E98249D961F0033B525 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FA1D3E99249D96330033B525 /* TableViewCells */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		FA1D3E99249D96330033B525 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				FA1D3E86249CB8000033B525 /* CharactersTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		FA5ED0B1249D9A3200C3AC89 /* Shared Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA1D3E81249CAD1B0033B525 /* CharactersModel.swift */,
+			);
+			path = "Shared Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -515,7 +523,6 @@
 				FA1D3E87249CB8000033B525 /* CharactersTableViewCell.swift in Sources */,
 				FA1D3E5F249C9A5F0033B525 /* API.swift in Sources */,
 				FA1D3E89249CB96A0033B525 /* UIImageView.swift in Sources */,
-				FA1D3E95249CF6E30033B525 /* SearchModel.swift in Sources */,
 				FA1D3E65249C9E5C0033B525 /* String.swift in Sources */,
 				FA1D3E7B249CA84A0033B525 /* UIViewController.swift in Sources */,
 				FA1D3E80249CAB7D0033B525 /* Indicator.swift in Sources */,
@@ -526,6 +533,7 @@
 				FA1D3E91249CF6BC0033B525 /* SearchViewController.swift in Sources */,
 				FA1D3E85249CB3510033B525 /* ParallelogramView.swift in Sources */,
 				FA1D3E62249C9AC90033B525 /* Constants.swift in Sources */,
+				FA5ED0B3249D9A5400C3AC89 /* Characters.swift in Sources */,
 				FA1D3E8B249CC6310033B525 /* JSONDecoder.swift in Sources */,
 				FA1D3E93249CF6D70033B525 /* SearchPresenter.swift in Sources */,
 				FA1D3E82249CAD1B0033B525 /* CharactersModel.swift in Sources */,

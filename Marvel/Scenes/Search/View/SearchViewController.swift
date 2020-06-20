@@ -8,7 +8,21 @@
 
 import UIKit
 
+protocol SearchViewLogic: IndicatorProtocol {
+    func setupNavigationItem()
+    func setupSearchController()
+    func popViewController()
+    func setSearchBarFirstResponder()
+    func reloadData()
+    func navigateTCharacterDetailsVCWith(characterData: CharacterResponse.Data.Results)
+}
+
 class SearchViewController: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
+    
+    private lazy var presenter: SearchPresenterLogic = {
+       return SearchPresenter(view: self, model: CharactersModel())
+    }()
     
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
@@ -22,34 +36,77 @@ class SearchViewController: UIViewController {
         return searchController
     }()
     
-    func setUpNavigationItem() {
-        navigationItem.hidesBackButton = true
-        navigationItem.titleView = searchController.searchBar
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        presenter.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        searchController.isActive = true
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setUpNavigationItem()
+        presenter.viewDidAppear()
     }
 }
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        presenter.searchTextDidChangedWith(text: searchText)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
+        presenter.searchBarCancelButtonDidClicked()
     }
 }
 
 extension SearchViewController: UISearchControllerDelegate {
     func didPresentSearchController(_ searchController: UISearchController) {
-        DispatchQueue.main.async { searchController.searchBar.becomeFirstResponder() }
+        presenter.didPresentSearchController()
+    }
+}
+
+extension SearchViewController: SearchViewLogic {
+    func setupNavigationItem() {
+        navigationItem.hidesBackButton = true
+        navigationItem.titleView = searchController.searchBar
+    }
+    
+    func setupSearchController() {
+        searchController.isActive = true
+    }
+    
+    func popViewController() {
+        pop()
+    }
+    
+    func setSearchBarFirstResponder() {
+        DispatchQueue.main.async {
+            self.searchController.searchBar.becomeFirstResponder()
+        }
+    }
+    
+    func reloadData() {
+        tableView.reloadData()
+    }
+    
+    func navigateTCharacterDetailsVCWith(characterData: CharacterResponse.Data.Results) {
+        
+    }
+}
+
+extension SearchViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter.characterCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! CharactersTableViewCell
+        presenter.configure(cell, at: indexPath.row)
+        
+        return cell
+    }
+}
+
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectAt(row: indexPath.row)
     }
 }

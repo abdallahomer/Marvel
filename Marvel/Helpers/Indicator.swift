@@ -16,7 +16,7 @@ class Indicator {
         if  let appDelegate = UIApplication.shared.delegate as? AppDelegate,
             let window = appDelegate.window {
             activityIndicator.frame = CGRect(x:0, y:0, width:40, height:40)
-            activityIndicator.style = .large
+            activityIndicator.style = .medium
             activityIndicator.color = .red
             activityIndicator.center = CGPoint(x: window.bounds.width / 2, y: window.bounds.height / 2)
             window.addSubview(activityIndicator)
