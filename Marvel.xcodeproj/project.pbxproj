@@ -37,6 +37,8 @@
 		FA5ED0BF249DC46800C3AC89 /* CharacterDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5ED0BE249DC46800C3AC89 /* CharacterDetailsTableViewCell.swift */; };
 		FAE8094E249E0156001D819B /* ActionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE8094D249E0156001D819B /* ActionsCollectionViewCell.swift */; };
 		FAE80950249E0C71001D819B /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE8094F249E0C71001D819B /* Collection.swift */; };
+		FAE80953249E33DE001D819B /* CacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE80952249E33DD001D819B /* CacheProtocol.swift */; };
+		FAE80955249E348B001D819B /* RealmCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE80954249E348B001D819B /* RealmCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		FA5ED0BE249DC46800C3AC89 /* CharacterDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		FAE8094D249E0156001D819B /* ActionsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAE8094F249E0C71001D819B /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		FAE80952249E33DD001D819B /* CacheProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheProtocol.swift; sourceTree = "<group>"; };
+		FAE80954249E348B001D819B /* RealmCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,7 @@
 		FA177D0C249C78F1005BBF3B /* Marvel */ = {
 			isa = PBXGroup;
 			children = (
+				FAE80951249E33C3001D819B /* Cache */,
 				FA5ED0B1249D9A3200C3AC89 /* Shared Models */,
 				FA1D3E98249D961F0033B525 /* Cells */,
 				FA1D3E6C249CA34F0033B525 /* Scenes */,
@@ -410,6 +415,15 @@
 			path = "CollectionView Cells";
 			sourceTree = "<group>";
 		};
+		FAE80951249E33C3001D819B /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				FAE80952249E33DD001D819B /* CacheProtocol.swift */,
+				FAE80954249E348B001D819B /* RealmCache.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -592,6 +606,8 @@
 				FA1D3E91249CF6BC0033B525 /* SearchViewController.swift in Sources */,
 				FA5ED0BD249DB22B00C3AC89 /* CharacterDetailsrModel.swift in Sources */,
 				FA1D3E85249CB3510033B525 /* ParallelogramView.swift in Sources */,
+				FAE80955249E348B001D819B /* RealmCache.swift in Sources */,
+				FAE80953249E33DE001D819B /* CacheProtocol.swift in Sources */,
 				FA1D3E62249C9AC90033B525 /* Constants.swift in Sources */,
 				FAE80950249E0C71001D819B /* Collection.swift in Sources */,
 				FAE8094E249E0156001D819B /* ActionsCollectionViewCell.swift in Sources */,

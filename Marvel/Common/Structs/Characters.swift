@@ -8,30 +8,30 @@
 
 import Foundation
 
-struct CharacterResponse: Decodable {
+struct CharacterResponse: Codable {
     let code: Int
     let data: Data?
     
-    struct Data: Decodable {
+    struct Data: Codable {
         let offset: Int
         let limit: Int
         let total: Int
         let count: Int
         let results: [Results]
         
-        struct Results: Decodable {
+        struct Results: Codable {
             let id: Int
             let name: String
             let description: String
             let thumbnail: Thumbnail?
             let urls: [URLs]
             
-            struct Thumbnail: Decodable {
+            struct Thumbnail: Codable {
                 let path: String
                 let `extension`: String
             }
             
-            struct URLs: Decodable {
+            struct URLs: Codable {
                 let url: String
                 let type: String
             }

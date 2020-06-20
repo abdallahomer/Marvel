@@ -22,6 +22,9 @@ class CharactersPresenter {
     private weak var view: CharactersViewLogic?
     private let model: CharactersModelLogic
     private var charactersArray: [CharacterResponse.Data.Results]
+    private var offset = 0
+    private let limit = 20
+    private var isRequesting = false
     
     init(view: CharactersViewLogic, model: CharactersModelLogic, charactersArray: [CharacterResponse.Data.Results] = []) {
         self.view = view
@@ -37,11 +40,19 @@ extension CharactersPresenter: CharactersPresenterLogic {
     }
     
     private func getCharacters() {
+        guard !isRequesting else { return }
+        isRequesting = true
+        
         view?.showIndicator()
-        model.getCharactersData(parameters: [:]) { (success, response)  in
+        model.getCharactersData(parameters: [
+           "offset": offset,
+           "limit": limit
+        ]) { (success, response)  in
+            self.isRequesting = false
             self.view?.hideIndicator()
             if success {
-                self.charactersArray = response?.results ?? []
+                self.charactersArray.append(contentsOf: response?.results ?? [])
+                self.offset += self.limit
                 self.view?.reloadData()
             }
         }
@@ -58,6 +69,10 @@ extension CharactersPresenter: CharactersPresenterLogic {
     func configure(_ cell: CharactersTableViewCellProtocol, at row: Int) {
         cell.characterImageURL = charactersArray[row].thumbnail!.path + "." +  charactersArray[row].thumbnail!.extension
         cell.characterTitle = charactersArray[row].name
+        
+        if row >= offset - 1 {
+            getCharacters()
+        }
     }
     
     func didSelectAt(row: Int) {

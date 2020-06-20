@@ -23,6 +23,10 @@ class SearchPresenter {
     private weak var view: SearchViewLogic?
     private let model: CharactersModelLogic
     private var charactersArray: [CharacterResponse.Data.Results]
+    private var offset = 0
+    private let limit = 20
+    private var isRequesting = false
+    private var searchText = String()
     
     init(view: SearchViewLogic, model: CharactersModelLogic, charactersArray: [CharacterResponse.Data.Results] = []) {
         self.view = view
@@ -49,13 +53,23 @@ extension SearchPresenter: SearchPresenterLogic {
     }
     
     func searchTextDidChangedWith(text: String) {
+        guard !isRequesting else { return }
+        isRequesting = true
+        
         guard checkIfTextNotEmpty(text: text) else {return}
-        let parameters = ["nameStartsWith": text]
+        searchText = text
+        let parameters: [String: Any] = [
+            "nameStartsWith": text,
+           "offset": offset,
+           "limit": limit
+        ]
         view?.showIndicator()
         model.getCharactersData(parameters: parameters) { (success, response) in
             self.view?.hideIndicator()
             if success {
-                self.charactersArray = response?.results ?? []
+                self.isRequesting = false
+                self.charactersArray.append(contentsOf: response?.results ?? [])
+                self.offset += self.limit
                 self.view?.reloadData()
             }
         }
@@ -78,6 +92,10 @@ extension SearchPresenter: SearchPresenterLogic {
     func configure(_ cell: CharactersTableViewCellProtocol, at row: Int) {
         cell.characterImageURL = charactersArray[row].thumbnail!.path + "." +  charactersArray[row].thumbnail!.extension
         cell.characterTitle = charactersArray[row].name
+        
+        if row >= offset - 1 {
+            searchTextDidChangedWith(text: searchText)
+        }
     }
     
     func didSelectAt(row: Int) {
