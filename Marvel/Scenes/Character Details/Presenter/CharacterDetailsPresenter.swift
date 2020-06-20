@@ -23,6 +23,7 @@ protocol CharacterDetailsPresenterLogic {
     
     var actions: [[ActionsResponse.Data.Results]] {get}
     func configure(_ cell: ActionCollectionViewCellProtocol, at parentRow: Int, childRow: Int)
+    func didSelectAt(parentRow: Int, childRow: Int)
 }
 
 class CharacterDetailsPresenter {
@@ -106,5 +107,9 @@ extension CharacterDetailsPresenter: CharacterDetailsPresenterLogic {
         let `extension` = actionsArray[safe: parentRow]?[childRow].thumbnail?.extension ?? ""
         cell.actionImageURL = path + "." + `extension`
         cell.actionTitle = actionsArray[safe: parentRow]?[childRow].title ?? ""
+    }
+    
+    func didSelectAt(parentRow: Int, childRow: Int) {
+        view?.presentMediaDataWith(data: actionsArray[parentRow][childRow])
     }
 }

@@ -17,6 +17,7 @@ extension UIViewController {
     
     func presentViewControllerWith<T: UIViewController>(_ identifier: String, in storyboard: String, type: T.Type? = nil) {
         let viewController = setupViewControllerWith(identifier, in: storyboard)
+        viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: false, completion: nil)
     }
     

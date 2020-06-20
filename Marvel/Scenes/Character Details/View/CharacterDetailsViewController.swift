@@ -19,8 +19,9 @@ protocol CharacterDetailsViewLogic: IndicatorProtocol {
     var characterLinks: [CharacterResponse.Data.Results.URLs]? {get}
     
     func configureLinksStackViewsWith(title: String) -> UIStackView
-    
     func reloadData()
+    
+    func presentMediaDataWith(data: ActionsResponse.Data.Results)
 }
 
 class CharacterDetailsViewController: UIViewController {
@@ -119,7 +120,9 @@ extension CharacterDetailsViewController : UICollectionViewDataSource {
 }
 
 extension CharacterDetailsViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelectAt(parentRow: collectionView.tag, childRow: indexPath.row)
+    }
 }
 
 extension CharacterDetailsViewController: CharacterDetailsViewLogic {
@@ -149,12 +152,11 @@ extension CharacterDetailsViewController: CharacterDetailsViewLogic {
     
     func configureLinksStackViewsWith(title: String) -> UIStackView {
         let button = UIButton()
-        button.titleLabel?.textAlignment = .left
         button.setTitle(title, for: .normal)
+        button.contentHorizontalAlignment = .left;
         let arrow = UIImageView(image: UIImage(named: "icn-cell-disclosure"))
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.alignment = .fill
         stackView.addArrangedSubview(button)
         stackView.addArrangedSubview(arrow)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -164,5 +166,12 @@ extension CharacterDetailsViewController: CharacterDetailsViewLogic {
     
     func reloadData() {
         tableView.reloadData()
+    }
+    
+    func presentMediaDataWith(data: ActionsResponse.Data.Results) {
+        let imageViewerVC = returnViewControllerWith("imageViewerVC", in: "Main", type: ImageViewerViewController.self)
+        imageViewerVC.mediaData = data
+        imageViewerVC.modalPresentationStyle = .overCurrentContext
+        present(imageViewerVC, animated: false, completion: nil)
     }
 }
