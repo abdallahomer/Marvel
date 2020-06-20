@@ -69,6 +69,8 @@ extension CharactersViewController: CharactersViewLogic {
     }
     
     func navigateTCharacterDetailsVCWith(characterData: CharacterResponse.Data.Results) {
-        
+        let characterDetailsVC = returnViewControllerWith("characterDetailsVC", in: "Main", type: CharacterDetailsViewController.self)
+        characterDetailsVC.characterData = characterData
+        navigationController?.pushViewController(characterDetailsVC, animated: true)
     }
 }

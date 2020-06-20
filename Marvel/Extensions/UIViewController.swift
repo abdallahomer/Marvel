@@ -10,16 +10,25 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    func pushViewControllerWith<T: UIViewController>(_ identifier: String, in storyboard: String, type: T.Type? = nil) {
-        let storyboard = UIStoryboard(name: storyboard, bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: identifier) as! T
+    func pushViewControllerWith(_ identifier: String, in storyboard: String) {
+        let viewController = setupViewControllerWith(identifier, in: storyboard)
         navigationController?.pushViewController(viewController, animated: true)
     }
     
     func presentViewControllerWith<T: UIViewController>(_ identifier: String, in storyboard: String, type: T.Type? = nil) {
+        let viewController = setupViewControllerWith(identifier, in: storyboard)
+        present(viewController, animated: false, completion: nil)
+    }
+    
+    func returnViewControllerWith<T: UIViewController>(_ identifier: String, in storyboard: String, type: T.Type? = nil) -> T {
+        let viewController = setupViewControllerWith(identifier, in: storyboard, type: type)
+        return viewController
+    }
+    
+    private func setupViewControllerWith<T: UIViewController>(_ identifier: String, in storyboard: String, type: T.Type? = nil) -> T {
         let storyboard = UIStoryboard(name: storyboard, bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: identifier) as! T
-        present(viewController, animated: false, completion: nil)
+        return viewController
     }
     
     func pop() {

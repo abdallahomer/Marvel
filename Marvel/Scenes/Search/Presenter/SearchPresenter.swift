@@ -81,6 +81,6 @@ extension SearchPresenter: SearchPresenterLogic {
     }
     
     func didSelectAt(row: Int) {
-        
+        view?.navigateTCharacterDetailsVCWith(characterData: charactersArray[row])
     }
 }

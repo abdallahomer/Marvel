@@ -61,6 +61,6 @@ extension CharactersPresenter: CharactersPresenterLogic {
     }
     
     func didSelectAt(row: Int) {
-        
+        view?.navigateTCharacterDetailsVCWith(characterData: charactersArray[row])
     }
 }
