@@ -28,9 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10, weight: .semibold)], for: .normal)
         
         UIBarButtonItem.appearance().setTitleTextAttributes(setTitleTextAttributes(with: .white, and: 14), for: .normal)
-        
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.red], for: .normal)
-
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1000.0, vertical: 0.0), for: .default)
     }
     
     private func setTitleTextAttributes(with color: UIColor, and fontSize: CGFloat) -> [NSAttributedString.Key: Any]? {
