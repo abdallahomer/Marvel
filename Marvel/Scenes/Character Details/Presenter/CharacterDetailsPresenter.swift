@@ -42,19 +42,20 @@ extension CharacterDetailsPresenter: CharacterDetailsPresenterLogic {
     func viewDidLoad() {
         view?.setCharacterTitle()
         view?.setupNaviationItems()
-        getActionsfor(actionType: .comics)
-        getActionsfor(actionType: .series)
-        getActionsfor(actionType: .stories)
-        getActionsfor(actionType: .events)
+        self.actionsArray = [[], [], [], []]
+        getActionsfor(actionType: .comics) { self.actionsArray[0] = $0 }
+        getActionsfor(actionType: .series) { self.actionsArray[1] = $0 }
+        getActionsfor(actionType: .stories) { self.actionsArray[2] = $0 }
+        getActionsfor(actionType: .events) { self.actionsArray[3] = $0 }
     }
     
-    private func getActionsfor(actionType: ActionType) {
+    private func getActionsfor(actionType: ActionType, completion: @escaping ([ActionsResponse.Data.Results]) -> Void) {
         view?.showIndicator()
         guard let characterId = view?.characterId else {return}
         model.getActionsDataFor(characterId: characterId, actionType: actionType) { (success, response) in
             self.view?.hideIndicator()
             if success {
-                self.actionsArray.append(response?.results ?? [])
+                completion(response?.results ?? [])
                 self.view?.reloadData()
             }
         }
@@ -84,10 +85,8 @@ extension CharacterDetailsPresenter: CharacterDetailsPresenterLogic {
     
     func configure(_ cell: CharacterRelatedLinksCell, at row: Int) {
         guard let linkTitlesArray = view?.characterLinks else {return}
-        for link in linkTitlesArray {
-            let stackView = view?.configureLinksStackViewsWith(title: link.type)
-            cell.stackView = stackView
-        }
+        let linkViews = linkTitlesArray.compactMap({ view?.configureLinksStackViewsWith(title: $0.type) })
+        cell.set(linkViews: linkViews)
     }
     
     func tableViewWillDisplayAt(_ cell: CharacterActionsCell, at row: Int) {

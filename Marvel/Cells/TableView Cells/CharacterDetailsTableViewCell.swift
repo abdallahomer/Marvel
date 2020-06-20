@@ -18,7 +18,7 @@ protocol CharacterDetailsCellProtocol: AnyObject {
 }
 
 protocol CharacterRelatedLinksCellProtocol: AnyObject {
-    var stackView: UIStackView? {set get}
+    func set(linkViews: [UIView])
 }
 
 class CharacterThumbnailCell: UITableViewCell, CharacterThumbnailCellProtocol {
@@ -69,10 +69,12 @@ class CharacterActionsCell: UITableViewCell {
 class CharacterRelatedLinksCell: UITableViewCell, CharacterRelatedLinksCellProtocol {
     @IBOutlet weak var linksStackView: UIStackView!
     
-    var stackView: UIStackView? {
-        didSet {
-            stackView?.addArrangedSubview(stackView ?? UIStackView())
-            stackView?.translatesAutoresizingMaskIntoConstraints = false
+    func set(linkViews: [UIView]) {
+        for view in linksStackView.arrangedSubviews {
+            view.removeFromSuperview()
+        }
+        for view in linkViews {
+            linksStackView.addArrangedSubview(view)
         }
     }
 }

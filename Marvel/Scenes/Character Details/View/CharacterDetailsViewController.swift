@@ -149,6 +149,7 @@ extension CharacterDetailsViewController: CharacterDetailsViewLogic {
     
     func configureLinksStackViewsWith(title: String) -> UIStackView {
         let button = UIButton()
+        button.titleLabel?.textAlignment = .left
         button.setTitle(title, for: .normal)
         let arrow = UIImageView(image: UIImage(named: "icn-cell-disclosure"))
         let stackView = UIStackView()
